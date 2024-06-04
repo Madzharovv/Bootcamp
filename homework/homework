@@ -1,0 +1,15 @@
+feature 3
+react app
+folder pages
+file home
+in home component 
+load todos and post form the placeholder api into a html table
+for every row should have 2  buttons delete and edit
+when edit is place chang name to 123
+put the api placeholder in dot env file
+setup tailwind npm 
+
+so later we can deploy
+
+
+

@@ -3,3 +3,44 @@ This is the end
 ....
 okaay
 hala madrid
+
+constructed 
+render 
+mounnt 
+render 
+unmount
+
+functions that start with use are hooks
+
+    hooks are oinly used in lifecycles
+    hooks can use hooks inside of them
+
+
+useEffect
+        does constructed render mouunt 
+        
+        render(
+            unmounts
+        )
+
+
+
+useMemo
+    carries out a function which is ndecalre in the dependecies
+    eg"
+ 
+ useMemo
+ return (), [dependecies]
+
+"
+
+useCallback
+caches all results and remmbers the begingin input and outfit and would only chnage the results when they change. 
+
+custom hooks
+
+when using map use key to identy elements
+
+
+
+rafce
