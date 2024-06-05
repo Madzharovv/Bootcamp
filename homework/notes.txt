@@ -1,0 +1,14 @@
+every exported componennt like buttons can have props liike 
+on click()=> void
+children: reactnode
+disabled? : boolean
+
+
+
+
+
+
+material ui 
+ant design 
+
+config provider alwasy written in main used to override styles of library components

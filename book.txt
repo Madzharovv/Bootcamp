@@ -19,7 +19,7 @@ functions that start with use are hooks
 useEffect
         does constructed render mouunt 
         
-        render(
+        return(
             unmounts
         )
 
@@ -37,6 +37,13 @@ useMemo
 useCallback
 caches all results and remmbers the begingin input and outfit and would only chnage the results when they change. 
 
+
+use ref hooks
+used to interact with html elements
+
+
+
+const button= use ref 
 custom hooks
 
 when using map use key to identy elements
