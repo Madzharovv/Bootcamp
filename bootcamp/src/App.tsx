@@ -7,7 +7,7 @@ function App() {
 
   return (
   <>
-  <p>hello</p>
+  <h1 className='flex justify-center'>Bootcamp</h1>
 
   <Home /></>
  

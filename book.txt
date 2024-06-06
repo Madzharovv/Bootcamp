@@ -51,3 +51,7 @@ when using map use key to identy elements
 
 
 rafce
+
+
+react lazy loading 
+const home = lazy(()=> import('./home'))

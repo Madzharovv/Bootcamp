@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <>
 
-        <div className="flex-row text-left  w-full max-w-[60%] mx-auto justify-center mb-20">
+        <div className="flex-row text-left  w-full max-w-[60%] min-w-[50%] mx-auto justify-center mb-20">
                 <h1 className="mb-6 text-xl">Todos:</h1>
                 <table className="">
                     <thead>
@@ -27,14 +27,14 @@ const Home = () => {
                             <tr key={todo.id}>
                                 <td className="w-full max-w-96">{todo.title}</td>
                                 <td><Button type="primary m-2">Edit</Button></td>
-                                <td><Button type="primary">Delete</Button></td>
+                                <td><Button type="primary m-2">Delete</Button></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
 
-            <div className="flex-row text-left  justify-center w-full max-w-[60%] mx-auto mb-20"> 
+            <div className="flex-row text-left  justify-center w-full max-w-[60%] min-w-[50%] mx-auto mb-20"> 
             <h1 className="mb-6 text-xl">Posts:</h1>
             <table className="">
                 <thead>
