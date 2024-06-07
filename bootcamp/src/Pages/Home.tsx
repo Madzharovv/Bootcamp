@@ -1,5 +1,8 @@
 import useFetch from "../Hooks/useFetch";
-import { Button } from 'antd';
+import { Button,Modal } from 'antd';
+import React, { useState } from 'react';
+
+
 
 const Home = () => {
   const { data: todos, setData: setTodos, isloading: isTodosLoading } = useFetch('/todos', 5);
@@ -30,6 +33,20 @@ const Home = () => {
       post.id === id ? { ...post, title: 'hello' } : post
     );
     setPosts(newPosts);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -73,14 +90,27 @@ const Home = () => {
             {posts?.map(post => (
               <tr key={post.id}>
                 <td className="w-full max-w-96">{post.title}</td>
-                <td><Button type="primary m-2">Edit</Button></td>
+                <td> <Button type="primary" onClick={showModal}>
+                Open Modal
+              </Button>
+              <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+              </Modal></td>
                 <td><Button onClick={() => deletePosts(post.id)} type="primary m-2">Delete</Button></td>
                 <td><Button onClick={() => permEditPosts(post.id)} type="primary m-2">EditPerm</Button></td>
               </tr>
             ))}
           </tbody>
         </table>
+      <div>
+      <div>
+      <h1>Modal</h1>
+     
       </div>
+      </div>
+        </div>
     </>
   );
 };
