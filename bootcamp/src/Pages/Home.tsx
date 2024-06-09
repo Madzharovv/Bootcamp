@@ -71,7 +71,7 @@ const Home = () => {
               Edit
               </Button>
               <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-              <Input placeholder="Basic usage" />                
+              <Input placeholder="Basic usage" />  
               </Modal></td>
                 <td><Button onClick={() => deleteTodos(todo.id)} type="primary m-2">Delete</Button></td>
                 <td><Button onClick={() => permEditTodos(todo.id)} type="primary m-2">EditPerm</Button></td>
