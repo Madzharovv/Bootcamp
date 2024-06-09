@@ -1,6 +1,7 @@
 import useFetch from "../Hooks/useFetch";
-import { Button,Modal } from 'antd';
+import { Button,Modal,Input } from 'antd';
 import React, { useState } from 'react';
+
 
 
 
@@ -66,7 +67,14 @@ const Home = () => {
             {todos?.map(todo => (
               <tr key={todo.id}>
                 <td className="w-full max-w-96">{todo.title}</td>
-                <td><Button type="primary m-2">Edit</Button></td>
+                <td> <Button type="primary" onClick={showModal}>
+              Edit
+              </Button>
+              <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+              <Input placeholder="Basic usage" />
+                
+                
+              </Modal></td>
                 <td><Button onClick={() => deleteTodos(todo.id)} type="primary m-2">Delete</Button></td>
                 <td><Button onClick={() => permEditTodos(todo.id)} type="primary m-2">EditPerm</Button></td>
               </tr>
@@ -91,12 +99,11 @@ const Home = () => {
               <tr key={post.id}>
                 <td className="w-full max-w-96">{post.title}</td>
                 <td> <Button type="primary" onClick={showModal}>
-                Open Modal
+              Edit
               </Button>
               <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+              <Input placeholder="Basic usage" />
+
               </Modal></td>
                 <td><Button onClick={() => deletePosts(post.id)} type="primary m-2">Delete</Button></td>
                 <td><Button onClick={() => permEditPosts(post.id)} type="primary m-2">EditPerm</Button></td>
