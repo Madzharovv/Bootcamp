@@ -1,26 +1,13 @@
 import useFetch from "../hooks/useFetch";
-import { Button, Modal, Input } from 'antd';
+import { Button, Modal } from 'antd';
 import React, { useState } from 'react';
 
 // Define types for todos and posts
-type Todo = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
-
-type Post = {
-  id: number;
-  title: string;
-  body: string;
-};
 
 const Home: React.FC = () => {
-  const { data: todos, setData: setTodos, isLoading: isTodosLoading } = useFetch<Todo[]>('/todos', 5);
-  const { data: posts, setData: setPosts, isLoading: isPostsLoading } = useFetch<Post[]>('/posts', 5);
+  const { data: todos, setData: setTodos, isLoading: isTodosLoading } = useFetch<any>('/todos', 5);
+  const { data: posts, setData: setPosts, isLoading: isPostsLoading } = useFetch<any>('/posts', 5);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log('Todos Loading', isTodosLoading);
-  console.log('Posts Loading', isPostsLoading);
 
   const deletePosts = (id: number) => {
     const newPosts = posts?.filter(post => post.id !== id);
@@ -44,7 +31,6 @@ const Home: React.FC = () => {
       post.id === id ? { ...post, title: 'hello' } : post
     );
     setPosts(newPosts);
-
   };
 
   const showModal = () => {
@@ -58,11 +44,12 @@ const Home: React.FC = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <>
       <div className="flex-row text-left w-full max-w-[60%] min-w-[50%] mx-auto justify-center mb-20">
         <h1 className="mb-6 text-xl">Todos:</h1>
-        <table className="">
+        <table>
           <thead>
             <tr>
               <th>Title</th>
@@ -75,12 +62,21 @@ const Home: React.FC = () => {
             {todos?.map(todo => (
               <tr key={todo.id}>
                 <td className="w-full max-w-96">{todo.title}</td>
-                <td> <Button type="primary" onClick={showModal}>
-              Edit
-              </Button>
-              </td>
-                <td><Button onClick={() => deleteTodos(todo.id)} type="primary m-2">Delete</Button></td>
-                <td><Button onClick={() => permEditTodos(todo.id)} type="primary m-2">EditPerm</Button></td>
+                <td>
+                  <Button type="primary" onClick={showModal}>
+                    Edit
+                  </Button>
+                </td>
+                <td>
+                  <Button onClick={() => deleteTodos(todo.id)} type="primary" className="m-2">
+                    Delete
+                  </Button>
+                </td>
+                <td>
+                  <Button onClick={() => permEditTodos(todo.id)} type="primary" className="m-2">
+                    EditPerm
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -89,7 +85,7 @@ const Home: React.FC = () => {
 
       <div className="flex-row text-left justify-center w-full max-w-[60%] min-w-[50%] mx-auto mb-20">
         <h1 className="mb-6 text-xl">Posts:</h1>
-        <table className="">
+        <table>
           <thead>
             <tr>
               <th>Title</th>
@@ -102,29 +98,35 @@ const Home: React.FC = () => {
             {posts?.map(post => (
               <tr key={post.id}>
                 <td className="w-full max-w-96">{post.title}</td>
-                <td> <Button type="primary" onClick={showModal}>
-              Edit
-              </Button>
-              </td>
-                <td><Button onClick={() => deletePosts(post.id)} type="primary m-2">Delete</Button></td>
-                <td><Button onClick={() => permEditPosts(post.id)} type="primary m-2">EditPerm</Button></td>
+                <td>
+                  <Button type="primary" onClick={showModal}>
+                    Edit
+                  </Button>
+                </td>
+                <td>
+                  <Button onClick={() => deletePosts(post.id)} type="primary" className="m-2">
+                    Delete
+                  </Button>
+                </td>
+                <td>
+                  <Button onClick={() => permEditPosts(post.id)} type="primary" className="m-2">
+                    EditPerm
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-      <div>
-      <div>
-      <h1>Modal</h1>
-     
       </div>
-      </div>
-        </div>
-  <Modal title = "Basic Modal" open = { isModalOpen } onOk = { handleOk } onCancel = { handleCancel } >
-    <Input placeholder="Basic usage" />
 
+      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Input placeholder="Basic usage" />
       </Modal>
     </>
   );
 };
 
 export default Home;
+
+
+
