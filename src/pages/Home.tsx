@@ -62,21 +62,16 @@ const Home: React.FC = () => {
             {todos?.map(todo => (
               <tr key={todo.id}>
                 <td className="w-full max-w-96">{todo.title}</td>
-                <td>
-                  <Button type="primary" onClick={showModal}>
-                    Edit
-                  </Button>
-                </td>
-                <td>
-                  <Button onClick={() => deleteTodos(todo.id)} type="primary" className="m-2">
-                    Delete
-                  </Button>
-                </td>
-                <td>
-                  <Button onClick={() => permEditTodos(todo.id)} type="primary" className="m-2">
-                    EditPerm
-                  </Button>
-                </td>
+                <td> <Button type="primary" onClick={showModal}>
+              Edit
+              </Button>
+              <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+              <Input placeholder="Basic usage" />
+                
+                
+              </Modal></td>
+                <td><Button onClick={() => deleteTodos(todo.id)} type="primary m-2">Delete</Button></td>
+                <td><Button onClick={() => permEditTodos(todo.id)} type="primary m-2">EditPerm</Button></td>
               </tr>
             ))}
           </tbody>
